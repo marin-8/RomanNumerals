@@ -27,6 +27,10 @@ namespace RomanNumerals
 		};
 
 
+		public static int MIN_VALUE { get; } = LettersValues.Values.First();
+		public static int MAX_VALUE { get; } = LettersValues.Values.Last();
+
+
 		public static Regex Regex_Roman { get; } = new Regex(@"^((CW|CD|D?C{0,3})(XC|XL|L?X{0,3})((IX|IV|V?I{0,3})|(M{0,3}))(cM|cd|d?c{0,3})(xc|xl|l?x{0,3})(ix|iv|v?i{0,3})|W)$");
 
 
@@ -49,10 +53,6 @@ namespace RomanNumerals
 		}}
 
 
-		public static int MIN_VALUE { get; } = LettersValues.Values.First();
-		public static int MAX_VALUE { get; } = LettersValues.Values.Last();
-
-
 	/// ==================================================== ///
 
 
@@ -69,7 +69,7 @@ namespace RomanNumerals
 
 
 	/// ==================================================== ///
-	/// 
+	
 
 		public static void ValidateNumber(in int number)
 		{
@@ -85,7 +85,7 @@ namespace RomanNumerals
 		}
 
 
-		/// ==================================================== ///
+	/// ==================================================== ///
 
 
 		public static string NumberToRoman(in int number)
@@ -109,7 +109,12 @@ namespace RomanNumerals
 
 			return
 				number > 3999
-				? roman.Replace("MV","IV").Replace("VMMM","VIII").Replace("VMM","VII").Replace("VM","VI").Replace("MX","IX")
+				? roman
+				  .Replace("MV","IV")
+				  .Replace("VMMM","VIII")
+				  .Replace("VMM","VII")
+				  .Replace("VM","VI")
+				  .Replace("MX","IX")
 				: roman;
 		}
 
@@ -167,12 +172,14 @@ namespace RomanNumerals
 
 	/// ==================================================== ///
 
+		// TODO: DecomposeRoman
 
 		//public static string DecomposeRoman(in string roman)
 		//{
 		//	return "";
 		//}
 
+		// TODO: ComposeRoman
 
 		//public static string ComposeRoman(in string roman)
 		//{
@@ -182,6 +189,7 @@ namespace RomanNumerals
 
 	/// ==================================================== ///
 	
+		// TODO: NumberToRomanDecomposed
 
 		//public static string NumberToRomanDecomposed(in int number)
 		//{
