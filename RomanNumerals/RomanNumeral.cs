@@ -73,8 +73,8 @@ namespace RomanNumerals
 
 		public static void ValidateNumber(in int number)
 		{
-			if(number < 1 || number > 1000000)
-				throw new ArgumentOutOfRangeException("The number must be between 1 and 1000000 (included)");
+			if(number < MIN_VALUE || number > MAX_VALUE)
+				throw new ArgumentOutOfRangeException($"The number must be between {MIN_VALUE} and {MAX_VALUE} (both included)");
 		}
 
 
@@ -92,7 +92,7 @@ namespace RomanNumerals
 		{
 			ValidateNumber(in number);
 
-			if(number == LettersValues.Values.Last())
+			if(number == MAX_VALUE)
 				return LettersValues.Keys.Last().ToString();
 
 			string roman = "";
@@ -127,7 +127,7 @@ namespace RomanNumerals
 			ValidateRoman(in roman);
 
 			if(roman == LettersValues.Keys.Last().ToString())
-				return LettersValues.Values.Last();
+				return MAX_VALUE;
 
 			int number = 0;
 			string _roman = roman.Replace("IV","MV").Replace("VIII","VMMM").Replace("VII","VMM").Replace("VI","VM").Replace("IX","MX");
